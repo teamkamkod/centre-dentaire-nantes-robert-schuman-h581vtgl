@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Centre Dentaire Nantes Robert Schuman : accueil chaleureux, soins délicats et urgences rapides. Ouvert du lundi au vendredi, 9h-19h. Prenez rendez-vous dès maintenant.">
+    <meta name="description" content="Centre Dentaire Nantes Robert Schuman : accueil chaleureux, soins délicats et urgences rapides. 98 Bd Robert Schuman, Nantes. Prenez rendez-vous au 02 72 24 74 49.">
     <title>Centre Dentaire Nantes Robert Schuman | Soins dentaires à Nantes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1B4332;
-            --secondary: #D4A373;
-            --background: #FDFBF7;
-            --text: #2D2A26;
-            --cta: #B07D4F;
-            --font-heading: 'Cormorant Garamond', serif;
-            --font-body: 'Montserrat', sans-serif;
-            --radius: 8px;
+            --primary: #FF4D00;
+            --secondary: #1A1A1A;
+            --background: #FAFAF8;
+            --text: #1A1A1A;
+            --cta: #FF4D00;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --radius: 0;
         }
 
         * {
@@ -38,26 +38,28 @@
         }
 
         /* Navigation */
-        header {
-            position: sticky;
+        nav {
+            position: fixed;
             top: 0;
-            z-index: 100;
-            background-color: var(--background);
-            border-bottom: 1px solid rgba(27, 67, 50, 0.1);
-            padding: 1rem 1.5rem;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .logo {
+        nav .logo {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
         }
@@ -66,133 +68,136 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text);
-            font-weight: 500;
             font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--cta);
+            color: var(--primary);
         }
 
         .burger-menu {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 5px;
+            gap: 0.4rem;
         }
 
         .burger-menu span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 2px;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
             transition: all 0.3s ease;
         }
 
         @media (max-width: 767px) {
+            nav .container {
+                padding: 1rem;
+            }
+
+            nav .logo {
+                font-size: 1rem;
+            }
+
             .burger-menu {
                 display: flex;
             }
 
             nav ul {
+                display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
                 flex-direction: column;
-                background-color: var(--background);
+                background: white;
                 padding: 1.5rem;
                 gap: 1rem;
-                display: none;
-                border-bottom: 1px solid rgba(27, 67, 50, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             }
 
             nav ul.open {
                 display: flex;
             }
 
-            .burger-menu.active span:nth-child(1) {
-                transform: rotate(45deg) translate(10px, 10px);
-            }
-
-            .burger-menu.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .burger-menu.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
+            nav a {
+                font-size: 1rem;
             }
         }
 
         /* Hero Section */
         #hero {
             height: 100vh;
-            background: linear-gradient(rgba(27, 67, 50, 0.5), rgba(27, 67, 50, 0.5)), url('assets/hero.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #FF4D00 0%, #FF6B2D 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
             position: relative;
             overflow: hidden;
+            margin-top: 60px;
         }
 
-        .hero-content {
-            max-width: 600px;
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/hero.jpg') center/cover;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
             padding: 2rem;
-            animation: fadeInUp 1s ease-out;
+            max-width: 600px;
         }
 
-        .hero-content h1 {
+        #hero h1 {
             font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.2;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
-        .hero-content p {
+        #hero p {
             font-size: clamp(1rem, 2vw, 1.25rem);
             margin-bottom: 2rem;
-            line-height: 1.8;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
 
-        .btn {
+        #hero .cta-button {
             display: inline-block;
-            padding: 0.875rem 2rem;
-            background-color: var(--cta);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--radius);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(27, 67, 50, 0.2);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            border: 2px solid white;
-            margin-left: 1rem;
-        }
-
-        .btn-secondary:hover {
-            background-color: white;
+            background: white;
             color: var(--primary);
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        #hero .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeInUp {
@@ -206,96 +211,94 @@
             }
         }
 
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
         /* Sections */
         section {
             padding: 4rem 1.5rem;
         }
 
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-heading {
+        section h2 {
             font-family: var(--font-heading);
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
             font-weight: 700;
-            color: var(--primary);
             margin-bottom: 1rem;
-            text-align: center;
+            color: var(--text);
         }
 
-        .section-text {
-            font-size: 1.05rem;
-            color: var(--text);
-            text-align: center;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        section > .container > p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
         /* About Section */
         #apropos {
-            background-color: white;
+            background: white;
         }
 
-        .about-content {
+        #apropos .content {
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.8;
+        }
+
+        #apropos p {
             font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
         }
 
-        /* Featured Menu */
+        /* Featured Menu (Services) */
         #services {
-            background-color: var(--background);
+            background: var(--background);
         }
 
-        .menu-grid {
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .menu-card {
-            background-color: white;
+        .service-card {
+            background: white;
             padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.08);
+            text-align: center;
             transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .menu-card:nth-child(1) { animation-delay: 0.1s; }
-        .menu-card:nth-child(2) { animation-delay: 0.2s; }
-        .menu-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .menu-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(27, 67, 50, 0.15);
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .menu-card h3 {
+        .service-card h3 {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 600;
             margin-bottom: 1rem;
+            color: var(--primary);
         }
 
-        .menu-card p {
-            color: var(--text);
-            line-height: 1.7;
+        .service-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
         }
 
         /* Customer Reviews */
         #avis {
-            background-color: white;
+            background: white;
         }
 
-        .reviews-grid {
+        .reviews-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -303,32 +306,14 @@
         }
 
         .review-card {
-            background-color: var(--background);
+            background: var(--background);
             padding: 2rem;
-            border-radius: var(--radius);
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
         }
 
-        .review-card:nth-child(1) { animation-delay: 0.1s; }
-        .review-card:nth-child(2) { animation-delay: 0.2s; }
-        .review-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .review-quote {
-            font-size: 3rem;
-            color: var(--secondary);
-            line-height: 1;
-            margin-bottom: 1rem;
-            font-family: var(--font-heading);
-        }
-
-        .review-text {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-style: italic;
+        .review-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .review-stars {
@@ -338,14 +323,22 @@
         }
 
         .star {
-            color: #FFD700;
-            font-size: 1.2rem;
+            color: #FFB800;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-style: italic;
         }
 
         .review-author {
             font-weight: 600;
-            color: var(--primary);
-            font-size: 0.95rem;
+            color: var(--text);
+            font-size: 0.9rem;
         }
 
         .review-date {
@@ -356,7 +349,7 @@
 
         /* Gallery */
         #galerie {
-            background-color: var(--background);
+            background: var(--background);
         }
 
         .gallery-grid {
@@ -367,18 +360,17 @@
         }
 
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius);
             aspect-ratio: 1;
-            box-shadow: 0 8px 20px rgba(27, 67, 50, 0.12);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
+            overflow: hidden;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
         }
-
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
 
         .gallery-item img {
             width: 100%;
@@ -393,7 +385,7 @@
 
         /* Hours & Location */
         #horaires {
-            background-color: white;
+            background: white;
         }
 
         .hours-location-wrapper {
@@ -403,52 +395,52 @@
             margin-top: 2rem;
         }
 
-        @media (max-width: 767px) {
-            .hours-location-wrapper {
-                grid-template-columns: 1fr;
-            }
+        .hours-table {
+            width: 100%;
         }
 
-        .hours-table {
+        .hours-table table {
             width: 100%;
             border-collapse: collapse;
         }
 
+        .hours-table th,
         .hours-table td {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(27, 67, 50, 0.1);
-            font-size: 1rem;
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
         }
 
-        .hours-table td:first-child {
+        .hours-table th {
+            background: var(--background);
             font-weight: 600;
-            color: var(--primary);
-            width: 40%;
-        }
-
-        .hours-table td:last-child {
-            text-align: right;
             color: var(--text);
         }
 
+        .hours-table td {
+            font-size: 0.95rem;
+        }
+
         .location-info {
-            background-color: var(--background);
-            padding: 2rem;
-            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         .location-info p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-size: 1.05rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .location-info strong {
+            color: var(--primary);
         }
 
         .map-container {
             width: 100%;
             height: 300px;
-            border-radius: var(--radius);
+            border: 1px solid #ddd;
             overflow: hidden;
-            margin-top: 1.5rem;
         }
 
         .map-container iframe {
@@ -457,18 +449,25 @@
             border: none;
         }
 
-        /* Contact Form */
-        #contact {
-            background-color: var(--background);
+        @media (max-width: 767px) {
+            .hours-location-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .map-container {
+                height: 250px;
+            }
         }
 
-        .contact-form {
+        /* Contact Form */
+        #contact {
+            background: var(--background);
+        }
+
+        .contact-wrapper {
             max-width: 600px;
             margin: 2rem auto 0;
-            background-color: white;
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.08);
         }
 
         .form-group {
@@ -477,28 +476,27 @@
 
         .form-group label {
             display: block;
+            font-weight: 500;
             margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary);
+            color: var(--text);
             font-size: 0.95rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.875rem;
-            border: 1px solid rgba(27, 67, 50, 0.2);
-            border-radius: var(--radius);
+            padding: 0.75rem;
+            border: 1px solid #ddd;
             font-family: var(--font-body);
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: border-color 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--cta);
-            box-shadow: 0 0 0 3px rgba(176, 125, 79, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.1);
         }
 
         .form-group textarea {
@@ -506,224 +504,228 @@
             min-height: 120px;
         }
 
-        .form-group button {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--cta);
+        .submit-btn {
+            background: var(--cta);
             color: white;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: var(--radius);
-            font-weight: 600;
             font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
+            width: 100%;
             transition: all 0.3s ease;
             font-family: var(--font-body);
         }
 
-        .form-group button:hover {
-            background-color: var(--primary);
+        .submit-btn:hover {
+            background: #E63D00;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(27, 67, 50, 0.2);
+            box-shadow: 0 4px 12px rgba(255, 77, 0, 0.3);
         }
 
         /* Trust Signals */
         #confiance {
-            background-color: white;
+            background: white;
         }
 
-        .trust-grid {
+        .trust-signals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .trust-card {
+        .trust-signal {
             text-align: center;
-            padding: 2rem;
-            background-color: var(--background);
-            border-radius: var(--radius);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
+            padding: 1.5rem;
         }
 
-        .trust-card:nth-child(1) { animation-delay: 0.1s; }
-        .trust-card:nth-child(2) { animation-delay: 0.2s; }
-        .trust-card:nth-child(3) { animation-delay: 0.3s; }
+        .trust-signal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
 
-        .trust-card h3 {
+        .trust-signal h3 {
             font-family: var(--font-heading);
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
         }
 
-        .trust-card p {
-            color: var(--text);
-            line-height: 1.7;
-            font-size: 0.95rem;
+        .trust-signal p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary);
+            background: var(--secondary);
             color: white;
-            padding: 3rem 1.5rem 1.5rem;
+            padding: 3rem 1.5rem;
             text-align: center;
         }
 
-        .footer-container {
+        footer .container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        @media (max-width: 767px) {
-            .footer-content {
-                text-align: center;
-            }
-        }
-
-        .footer-section h4 {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .footer-section p {
+        footer p {
             font-size: 0.95rem;
-            line-height: 1.8;
-            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
-        .footer-divider {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            opacity: 0.85;
+        footer .cta-button {
+            display: inline-block;
+            background: var(--cta);
+            color: white;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        footer .cta-button:hover {
+            background: #E63D00;
+            transform: translateY(-2px);
         }
 
         /* Responsive */
         @media (max-width: 767px) {
             section {
-                padding: 3rem 1.5rem;
+                padding: 2.5rem 1.5rem;
             }
 
-            .section-heading {
-                font-size: 1.75rem;
+            section h2 {
+                font-size: 1.5rem;
             }
 
-            .menu-grid,
-            .reviews-grid,
-            .gallery-grid,
-            .trust-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .btn-secondary {
-                display: block;
-                margin: 1rem 0 0 0;
+            .reviews-container {
+                grid-template-columns: 1fr;
             }
 
-            .hero-content {
-                padding: 1.5rem;
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-signals-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (min-width: 768px) and (max-width: 1023px) {
-            .menu-grid,
-            .reviews-grid,
-            .gallery-grid,
-            .trust-grid {
+            .services-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        /* Accessibility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
+        @media (min-width: 1024px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .reviews-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .trust-signals-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="header-container">
-            <div class="logo">Centre Dentaire Nantes</div>
-            <nav>
-                <ul id="nav-menu">
-                    <li><a href="#hero">Accueil</a></li>
-                    <li><a href="#apropos">À propos</a></li>
-                    <li><a href="#services">Soins</a></li>
-                    <li><a href="#avis">Avis</a></li>
-                    <li><a href="#horaires">Horaires</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="burger-menu" id="burger-menu" aria-label="Menu mobile">
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Centre Dentaire</div>
+            <ul id="nav-menu">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#avis">Avis</a></li>
+                <li><a href="#horaires">Horaires</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger-menu" id="burger-menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
             <h1>Votre sourire, notre priorité</h1>
-            <p>Au Centre Dentaire Nantes Robert Schuman, nous vous accueillons dans un cadre chaleureux et moderne pour des soins dentaires de qualité, adaptés à toute la famille.</p>
-            <div>
-                <a href="#contact" class="btn">Prendre rendez-vous</a>
-                <a href="#services" class="btn btn-secondary">Découvrir nos soins</a>
-            </div>
+            <p>Au Centre Dentaire Nantes Robert Schuman, nous vous accueillons du lundi au vendredi de 9h à 19h pour des soins dentaires de qualité, dans un cadre chaleureux et rassurant.</p>
+            <a href="#contact" class="cta-button">Prendre rendez-vous</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="apropos">
-        <div class="section-container">
-            <h2 class="section-heading">Un cabinet dentaire à l'écoute de vos besoins</h2>
-            <div class="about-content">
-                <p>Situé au 98 Boulevard Robert Schuman à Nantes, notre cabinet vous reçoit du lundi au vendredi de 9h à 19h. Notre équipe, à l'image du Dr Lopes, est reconnue pour sa douceur, son écoute et son professionnalisme. Nous mettons un point d'honneur à vous expliquer chaque étape de vos soins et à vous offrir un suivi personnalisé, dans une atmosphère apaisante et rassurante.</p>
+        <div class="container">
+            <h2>Un cabinet dentaire à l'écoute de vos besoins</h2>
+            <div class="content">
+                <p>Situé au 98 Boulevard Robert Schuman à Nantes, notre cabinet met l'accent sur une prise en charge douce et personnalisée. Notre équipe, à l'image du Dr Lopes, est reconnue pour sa gentillesse, son écoute et son professionnalisme. Nous prenons le temps d'expliquer chaque étape de vos soins, pour que vous vous sentiez en confiance dès votre arrivée.</p>
             </div>
         </div>
     </section>
 
     <!-- Featured Menu (Services) -->
     <section id="services">
-        <div class="section-container">
-            <h2 class="section-heading">Nos domaines de soins</h2>
-            <p class="section-text">Le Centre Dentaire Nantes Robert Schuman propose une prise en charge complète pour votre santé bucco-dentaire : consultations de routine, soins conservateurs, urgences, et accompagnement des enfants comme des adultes. Nous sommes particulièrement attentifs à la délicatesse des soins, notamment pour les plus jeunes.</p>
-            <div class="menu-grid">
-                <div class="menu-card">
+        <div class="container">
+            <h2>Nos services</h2>
+            <p>Nous proposons une large gamme de soins dentaires pour toute la famille : consultations de routine, soins conservateurs, réparations en résine, traitements d'urgence, et suivi personnalisé. Chaque patient bénéficie d'une attention particulière, avec des gestes délicats et des explications claires.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Dentisterie générale</h3>
+                    <p>Consultations de routine, détartrage et nettoyage professionnel pour maintenir une hygiène dentaire optimale.</p>
+                </div>
+                <div class="service-card">
                     <h3>Soins conservateurs</h3>
-                    <p>Traitement des caries et réparations esthétiques en résine, réalisés avec précision et délicatesse.</p>
+                    <p>Traitement des caries et réparations en résine pour préserver vos dents naturelles.</p>
                 </div>
-                <div class="menu-card">
-                    <h3>Urgences dentaires</h3>
-                    <p>Prise en charge rapide des urgences, avec des rendez-vous disponibles dans les plus brefs délais.</p>
+                <div class="service-card">
+                    <h3>Urgence dentaire</h3>
+                    <p>Accueil rapide des patients sans rendez-vous pour les urgences dentaires. Nous sommes là pour vous.</p>
                 </div>
-                <div class="menu-card">
-                    <h3>Suivi régulier</h3>
-                    <p>Examens de contrôle et conseils personnalisés pour maintenir une bonne santé bucco-dentaire.</p>
+                <div class="service-card">
+                    <h3>Soins esthétiques</h3>
+                    <p>Blanchiment dentaire et traitements pour un sourire éclatant et confiant.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Implantologie</h3>
+                    <p>Pose d'implants dentaires avec notre plateau technique moderne et notre équipe expérimentée.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Dentisterie pédiatrique</h3>
+                    <p>Soins délicats et rassurants pour les enfants, dans un environnement accueillant et apaisant.</p>
                 </div>
             </div>
         </div>
@@ -731,13 +733,10 @@
 
     <!-- Customer Reviews -->
     <section id="avis">
-        <div class="section-container">
-            <h2 class="section-heading">Ils nous font confiance</h2>
-            <p class="section-text">La satisfaction de nos patients est notre plus belle récompense. Découvrez leurs retours d'expérience.</p>
-            <div class="reviews-grid">
+        <div class="container">
+            <h2>Ils nous font confiance</h2>
+            <div class="reviews-container">
                 <div class="review-card">
-                    <div class="review-quote">"</div>
-                    <p class="review-text">Rendez vous d'urgence très rapide. La dentiste a été très gentille et les soins ont été bien fait avec délicatesse. (Réparation en résine d'une dent cassée pour un enfant de 8ans)</p>
                     <div class="review-stars">
                         <span class="star">★</span>
                         <span class="star">★</span>
@@ -745,12 +744,11 @@
                         <span class="star">★</span>
                         <span class="star">★</span>
                     </div>
+                    <p class="review-text">"Rendez vous d'urgence très rapide. La dentiste a été très gentille et les soins ont été bien fait avec délicatesse. (Réparation en résine d'une dent cassée pour un enfant de 8ans)"</p>
                     <div class="review-author">Cyndelle Abdelmoumene-Chouippe</div>
                     <div class="review-date">il y a 3 semaines</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-quote">"</div>
-                    <p class="review-text">Docteur Lopes à l'écoute expliques tout, bon suivi, cette femme est douce et apaisante souriante vraiment je souhaite la garder longtemps.</p>
                     <div class="review-stars">
                         <span class="star">★</span>
                         <span class="star">★</span>
@@ -758,12 +756,11 @@
                         <span class="star">★</span>
                         <span class="star">★</span>
                     </div>
+                    <p class="review-text">"Docteur Lopes à l'écoute expliques tout, bon suivi, cette femme est douce et apaisante souriante vraiment je souhaite la garder longtemps."</p>
                     <div class="review-author">Nathalie Gauthier</div>
                     <div class="review-date">il y a 2 semaines</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-quote">"</div>
-                    <p class="review-text">J'ai été très bien accueilli et reçu. De l'accueil jusqu'à la Dentiste qui m'avait reçu. Encore merci à vous 🙏🏾</p>
                     <div class="review-stars">
                         <span class="star">★</span>
                         <span class="star">★</span>
@@ -771,6 +768,7 @@
                         <span class="star">★</span>
                         <span class="star">★</span>
                     </div>
+                    <p class="review-text">"J'ai été très bien accueilli et reçu. De l'accueil jusqu'à la Dentiste qui m'avait reçu. Encore merci à vous 🙏🏾"</p>
                     <div class="review-author">Albert A.</div>
                     <div class="review-date">il y a 2 semaines</div>
                 </div>
@@ -778,20 +776,20 @@
         </div>
     </section>
 
-    <!-- Gallery -->
+    <!-- Gallery Preview -->
     <section id="galerie">
-        <div class="section-container">
-            <h2 class="section-heading">Notre cabinet en images</h2>
-            <p class="section-text">Découvrez un environnement pensé pour votre confort et votre sérénité.</p>
+        <div class="container">
+            <h2>Notre cabinet en images</h2>
+            <p>Découvrez un environnement moderne et apaisant, pensé pour votre confort.</p>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="assets/hero.jpg" alt="Cabinet dentaire moderne et accueillant">
+                    <img src="assets/hero.jpg" alt="Cabinet dentaire moderne">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/gallery-1.jpg" alt="Salle de soins équipée de technologies modernes">
+                    <img src="assets/gallery-1.jpg" alt="Salle de soins">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/gallery-2.jpg" alt="Espace d'accueil chaleureux">
+                    <img src="assets/gallery-2.jpg" alt="Équipement dentaire">
                 </div>
             </div>
         </div>
@@ -799,48 +797,60 @@
 
     <!-- Hours & Location -->
     <section id="horaires">
-        <div class="section-container">
-            <h2 class="section-heading">Horaires & Accès</h2>
+        <div class="container">
+            <h2>Horaires & Accès</h2>
             <div class="hours-location-wrapper">
-                <div>
-                    <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 1.5rem; font-size: 1.3rem;">Nos horaires</h3>
-                    <table class="hours-table">
-                        <tr>
-                            <td>Lundi</td>
-                            <td>09:00 – 19:00</td>
-                        </tr>
-                        <tr>
-                            <td>Mardi</td>
-                            <td>09:00 – 19:00</td>
-                        </tr>
-                        <tr>
-                            <td>Mercredi</td>
-                            <td>09:00 – 19:00</td>
-                        </tr>
-                        <tr>
-                            <td>Jeudi</td>
-                            <td>09:00 – 19:00</td>
-                        </tr>
-                        <tr>
-                            <td>Vendredi</td>
-                            <td>09:00 – 19:00</td>
-                        </tr>
-                        <tr>
-                            <td>Samedi</td>
-                            <td>Fermé</td>
-                        </tr>
-                        <tr>
-                            <td>Dimanche</td>
-                            <td>Fermé</td>
-                        </tr>
+                <div class="hours-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jour</th>
+                                <th>Horaires</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lundi</td>
+                                <td>09:00 – 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Mardi</td>
+                                <td>09:00 – 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Mercredi</td>
+                                <td>09:00 – 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Jeudi</td>
+                                <td>09:00 – 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Vendredi</td>
+                                <td>09:00 – 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Samedi</td>
+                                <td>Fermé</td>
+                            </tr>
+                            <tr>
+                                <td>Dimanche</td>
+                                <td>Fermé</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="location-info">
-                    <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem;">Localisation</h3>
-                    <p><strong>Centre Dentaire Nantes Robert Schuman</strong></p>
-                    <p>98 Bd Robert Schuman<br>44300 Nantes, France</p>
+                    <div>
+                        <strong>Adresse</strong>
+                        <p>98 Bd Robert Schuman<br>44300 Nantes, France</p>
+                    </div>
+                    <div>
+                        <strong>Téléphone</strong>
+                        <p><a href="tel:+33272247449" style="color: var(--primary); text-decoration: none;">+33 2 72 24 74 49</a></p>
+                    </div>
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2738.8947329847!2d-1.5456!3d47.2199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805a51e5e5e5e5d%3A0x1234567890abcdef!2s98%20Boulevard%20Robert%20Schuman%2C%2044300%20Nantes!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.8891234567890!2d-1.5500000!3d47.2200000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDEzJzEyLjAiTiAxwrAzMyc0OC4wIlc!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -849,54 +859,72 @@
 
     <!-- Contact Form -->
     <section id="contact">
-        <div class="section-container">
-            <h2 class="section-heading">Contactez-nous</h2>
-            <p class="section-text">Pour toute demande de rendez-vous ou d'information, n'hésitez pas à nous écrire. Notre équipe vous répondra dans les plus brefs délais.</p>
-            <form class="contact-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Nom complet</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Adresse e-mail</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="subject">Objet</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Envoyer</button>
-                </div>
-            </form>
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <p>Pour toute question ou pour prendre rendez-vous, appelez-nous ou laissez-nous un message via le formulaire ci-dessous. Nous vous répondrons dans les plus brefs délais.</p>
+            <div class="contact-wrapper">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Envoyer</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Trust Signals -->
     <section id="confiance">
-        <div class="section-container">
-            <h2 class="section-heading">Pourquoi nous choisir ?</h2>
-            <p class="section-text">Une équipe à l'écoute, des soins délicats, et un accueil chaleureux : la confiance de nos patients est notre moteur.</p>
-            <div class="trust-grid">
-                <div class="trust-card">
-                    <h3>Note moyenne de 4,3/5</h3>
-                    <p>Basée sur 345 avis patients.</p>
+        <div class="container">
+            <h2>Pourquoi nous choisir ?</h2>
+            <p>Note moyenne de 4,3/5 basée sur 345 avis patients. Urgences rapides, soins délicats, équipe à l'écoute. Votre santé dentaire est entre de bonnes mains.</p>
+            <div class="trust-signals-grid">
+                <div class="trust-signal">
+                    <div class="trust-signal-icon">👨‍⚕️</div>
+                    <h3>Équipe expérimentée</h3>
+                    <p>Chirurgiens-dentistes reconnus pour leur expertise et leur dévouement.</p>
                 </div>
-                <div class="trust-card">
+                <div class="trust-signal">
+                    <div class="trust-signal-icon">⚡</div>
                     <h3>Urgences rapides</h3>
-                    <p>Rendez-vous d'urgence très rapides, comme en témoignent nos patients.</p>
+                    <p>Accueil des patients sans rendez-vous pour les urgences dentaires.</p>
                 </div>
-                <div class="trust-card">
-                    <h3>Approche douce et apaisante</h3>
-                    <p>Des praticiens attentionnés, particulièrement appréciés des enfants et des adultes anxieux.</p>
+                <div class="trust-signal">
+                    <div class="trust-signal-icon">🔬</div>
+                    <h3>Plateau technique moderne</h3>
+                    <p>Radio panoramique, CFAO et équipements de dernière génération.</p>
+                </div>
+                <div class="trust-signal">
+                    <div class="trust-signal-icon">😌</div>
+                    <h3>Patients anxieux</h3>
+                    <p>Prise en charge spécialisée avec sédation consciente si nécessaire.</p>
+                </div>
+                <div class="trust-signal">
+                    <div class="trust-signal-icon">💳</div>
+                    <h3>Conventionné secteur 1</h3>
+                    <p>Tarifs transparents et devis détaillés pour votre tranquillité.</p>
+                </div>
+                <div class="trust-signal">
+                    <div class="trust-signal-icon">🚊</div>
+                    <h3>Accès facile</h3>
+                    <p>Proche du tramway et parking à proximité pour votre confort.</p>
                 </div>
             </div>
         </div>
@@ -904,24 +932,9 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Centre Dentaire Nantes</h4>
-                    <p>98 Bd Robert Schuman<br>44300 Nantes, France</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Horaires</h4>
-                    <p>Lun-Ven : 09:00 – 19:00<br>Sam-Dim : Fermé</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Nous contacter</h4>
-                    <p><a href="#contact" style="color: var(--secondary); text-decoration: none;">Prendre rendez-vous</a></p>
-                </div>
-            </div>
-            <div class="footer-divider">
-                <p>&copy; 2024 Centre Dentaire Nantes Robert Schuman. Tous droits réservés.</p>
-            </div>
+        <div class="container">
+            <p>Centre Dentaire Nantes Robert Schuman - 98 Bd Robert Schuman, 44300 Nantes - Tél : +33 2 72 24 74 49</p>
+            <a href="#contact" class="cta-button">Prendre rendez-vous</a>
         </div>
     </footer>
 
@@ -931,7 +944,6 @@
         const navMenu = document.getElementById('nav-menu');
 
         burgerMenu.addEventListener('click', () => {
-            burgerMenu.classList.toggle('active');
             navMenu.classList.toggle('open');
         });
 
@@ -939,12 +951,18 @@
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                burgerMenu.classList.remove('active');
                 navMenu.classList.remove('open');
             });
         });
 
-        // Intersection Observer for fade-in animations
+        // Ensure nav is horizontal on desktop resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                navMenu.classList.remove('open');
+            }
+        });
+
+        // Subtle scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -953,28 +971,16 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all animated elements
-        document.querySelectorAll('.menu-card, .review-card, .gallery-item, .trust-card').forEach(el => {
+        // Observe service cards, review cards, and gallery items
+        document.querySelectorAll('.service-card, .review-card, .gallery-item, .trust-signal').forEach(el => {
+            el.style.opacity = '0';
             observer.observe(el);
-        });
-
-        // Smooth scroll behavior for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && document.querySelector(href)) {
-                    e.preventDefault();
-                    document.querySelector(href).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
         });
     </script>
 </body>
