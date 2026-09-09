@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Centre Dentaire Nantes Robert Schuman : accueil chaleureux, soins délicats et urgences rapides. Ouvert du lundi au vendredi, 9h-19h. Prenez rendez-vous dès maintenant.">
+    <title>Centre Dentaire Nantes Robert Schuman | Soins dentaires à Nantes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1B4332;
+            --secondary: #D4A373;
+            --background: #FDFBF7;
+            --text: #2D2A26;
+            --cta: #B07D4F;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--background);
+            border-bottom: 1px solid rgba(27, 67, 50, 0.1);
+            padding: 1rem 1.5rem;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--cta);
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .burger-menu {
+                display: flex;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--background);
+                padding: 1.5rem;
+                gap: 1rem;
+                display: none;
+                border-bottom: 1px solid rgba(27, 67, 50, 0.1);
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .burger-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+
+            .burger-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .burger-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(27, 67, 50, 0.5), rgba(27, 67, 50, 0.5)), url('assets/hero.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background-color: var(--cta);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(27, 67, 50, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 1.5rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-text {
+            font-size: 1.05rem;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        #apropos {
+            background-color: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Featured Menu */
+        #services {
+            background-color: var(--background);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .menu-card:nth-child(1) { animation-delay: 0.1s; }
+        .menu-card:nth-child(2) { animation-delay: 0.2s; }
+        .menu-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(27, 67, 50, 0.15);
+        }
+
+        .menu-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .menu-card p {
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Customer Reviews */
+        #avis {
+            background-color: white;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .review-card {
+            background-color: var(--background);
+            padding: 2rem;
+            border-radius: var(--radius);
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .review-card:nth-child(1) { animation-delay: 0.1s; }
+        .review-card:nth-child(2) { animation-delay: 0.2s; }
+        .review-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .review-quote {
+            font-size: 3rem;
+            color: var(--secondary);
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .review-text {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        /* Gallery */
+        #galerie {
+            background-color: var(--background);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            aspect-ratio: 1;
+            box-shadow: 0 8px 20px rgba(27, 67, 50, 0.12);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Hours & Location */
+        #horaires {
+            background-color: white;
+        }
+
+        .hours-location-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 767px) {
+            .hours-location-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table td {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(27, 67, 50, 0.1);
+            font-size: 1rem;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 600;
+            color: var(--primary);
+            width: 40%;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            color: var(--text);
+        }
+
+        .location-info {
+            background-color: var(--background);
+            padding: 2rem;
+            border-radius: var(--radius);
+        }
+
+        .location-info p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact Form */
+        #contact {
+            background-color: var(--background);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 1px solid rgba(27, 67, 50, 0.2);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cta);
+            box-shadow: 0 0 0 3px rgba(176, 125, 79, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--cta);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .form-group button:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(27, 67, 50, 0.2);
+        }
+
+        /* Trust Signals */
+        #confiance {
+            background-color: white;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .trust-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--background);
+            border-radius: var(--radius);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .trust-card:nth-child(1) { animation-delay: 0.1s; }
+        .trust-card:nth-child(2) { animation-delay: 0.2s; }
+        .trust-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .trust-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .trust-card p {
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        @media (max-width: 767px) {
+            .footer-content {
+                text-align: center;
+            }
+        }
+
+        .footer-section h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-heading {
+                font-size: 1.75rem;
+            }
+
+            .menu-grid,
+            .reviews-grid,
+            .gallery-grid,
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-secondary {
+                display: block;
+                margin: 1rem 0 0 0;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .menu-grid,
+            .reviews-grid,
+            .gallery-grid,
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Centre Dentaire Nantes</div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#hero">Accueil</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#services">Soins</a></li>
+                    <li><a href="#avis">Avis</a></li>
+                    <li><a href="#horaires">Horaires</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="burger-menu" id="burger-menu" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Votre sourire, notre priorité</h1>
+            <p>Au Centre Dentaire Nantes Robert Schuman, nous vous accueillons dans un cadre chaleureux et moderne pour des soins dentaires de qualité, adaptés à toute la famille.</p>
+            <div>
+                <a href="#contact" class="btn">Prendre rendez-vous</a>
+                <a href="#services" class="btn btn-secondary">Découvrir nos soins</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos">
+        <div class="section-container">
+            <h2 class="section-heading">Un cabinet dentaire à l'écoute de vos besoins</h2>
+            <div class="about-content">
+                <p>Situé au 98 Boulevard Robert Schuman à Nantes, notre cabinet vous reçoit du lundi au vendredi de 9h à 19h. Notre équipe, à l'image du Dr Lopes, est reconnue pour sa douceur, son écoute et son professionnalisme. Nous mettons un point d'honneur à vous expliquer chaque étape de vos soins et à vous offrir un suivi personnalisé, dans une atmosphère apaisante et rassurante.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Menu (Services) -->
+    <section id="services">
+        <div class="section-container">
+            <h2 class="section-heading">Nos domaines de soins</h2>
+            <p class="section-text">Le Centre Dentaire Nantes Robert Schuman propose une prise en charge complète pour votre santé bucco-dentaire : consultations de routine, soins conservateurs, urgences, et accompagnement des enfants comme des adultes. Nous sommes particulièrement attentifs à la délicatesse des soins, notamment pour les plus jeunes.</p>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <h3>Soins conservateurs</h3>
+                    <p>Traitement des caries et réparations esthétiques en résine, réalisés avec précision et délicatesse.</p>
+                </div>
+                <div class="menu-card">
+                    <h3>Urgences dentaires</h3>
+                    <p>Prise en charge rapide des urgences, avec des rendez-vous disponibles dans les plus brefs délais.</p>
+                </div>
+                <div class="menu-card">
+                    <h3>Suivi régulier</h3>
+                    <p>Examens de contrôle et conseils personnalisés pour maintenir une bonne santé bucco-dentaire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section id="avis">
+        <div class="section-container">
+            <h2 class="section-heading">Ils nous font confiance</h2>
+            <p class="section-text">La satisfaction de nos patients est notre plus belle récompense. Découvrez leurs retours d'expérience.</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-quote">"</div>
+                    <p class="review-text">Rendez vous d'urgence très rapide. La dentiste a été très gentille et les soins ont été bien fait avec délicatesse. (Réparation en résine d'une dent cassée pour un enfant de 8ans)</p>
+                    <div class="review-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="review-author">Cyndelle Abdelmoumene-Chouippe</div>
+                    <div class="review-date">il y a 3 semaines</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-quote">"</div>
+                    <p class="review-text">Docteur Lopes à l'écoute expliques tout, bon suivi, cette femme est douce et apaisante souriante vraiment je souhaite la garder longtemps.</p>
+                    <div class="review-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="review-author">Nathalie Gauthier</div>
+                    <div class="review-date">il y a 2 semaines</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-quote">"</div>
+                    <p class="review-text">J'ai été très bien accueilli et reçu. De l'accueil jusqu'à la Dentiste qui m'avait reçu. Encore merci à vous 🙏🏾</p>
+                    <div class="review-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <div class="review-author">Albert A.</div>
+                    <div class="review-date">il y a 2 semaines</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="galerie">
+        <div class="section-container">
+            <h2 class="section-heading">Notre cabinet en images</h2>
+            <p class="section-text">Découvrez un environnement pensé pour votre confort et votre sérénité.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/hero.jpg" alt="Cabinet dentaire moderne et accueillant">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/gallery-1.jpg" alt="Salle de soins équipée de technologies modernes">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/gallery-2.jpg" alt="Espace d'accueil chaleureux">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours & Location -->
+    <section id="horaires">
+        <div class="section-container">
+            <h2 class="section-heading">Horaires & Accès</h2>
+            <div class="hours-location-wrapper">
+                <div>
+                    <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 1.5rem; font-size: 1.3rem;">Nos horaires</h3>
+                    <table class="hours-table">
+                        <tr>
+                            <td>Lundi</td>
+                            <td>09:00 – 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>Mardi</td>
+                            <td>09:00 – 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>Mercredi</td>
+                            <td>09:00 – 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>Jeudi</td>
+                            <td>09:00 – 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>Vendredi</td>
+                            <td>09:00 – 19:00</td>
+                        </tr>
+                        <tr>
+                            <td>Samedi</td>
+                            <td>Fermé</td>
+                        </tr>
+                        <tr>
+                            <td>Dimanche</td>
+                            <td>Fermé</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="location-info">
+                    <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem;">Localisation</h3>
+                    <p><strong>Centre Dentaire Nantes Robert Schuman</strong></p>
+                    <p>98 Bd Robert Schuman<br>44300 Nantes, France</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2738.8947329847!2d-1.5456!3d47.2199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805a51e5e5e5e5d%3A0x1234567890abcdef!2s98%20Boulevard%20Robert%20Schuman%2C%2044300%20Nantes!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+        <div class="section-container">
+            <h2 class="section-heading">Contactez-nous</h2>
+            <p class="section-text">Pour toute demande de rendez-vous ou d'information, n'hésitez pas à nous écrire. Notre équipe vous répondra dans les plus brefs délais.</p>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nom complet</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Objet</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section id="confiance">
+        <div class="section-container">
+            <h2 class="section-heading">Pourquoi nous choisir ?</h2>
+            <p class="section-text">Une équipe à l'écoute, des soins délicats, et un accueil chaleureux : la confiance de nos patients est notre moteur.</p>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <h3>Note moyenne de 4,3/5</h3>
+                    <p>Basée sur 345 avis patients.</p>
+                </div>
+                <div class="trust-card">
+                    <h3>Urgences rapides</h3>
+                    <p>Rendez-vous d'urgence très rapides, comme en témoignent nos patients.</p>
+                </div>
+                <div class="trust-card">
+                    <h3>Approche douce et apaisante</h3>
+                    <p>Des praticiens attentionnés, particulièrement appréciés des enfants et des adultes anxieux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Centre Dentaire Nantes</h4>
+                    <p>98 Bd Robert Schuman<br>44300 Nantes, France</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horaires</h4>
+                    <p>Lun-Ven : 09:00 – 19:00<br>Sam-Dim : Fermé</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Nous contacter</h4>
+                    <p><a href="#contact" style="color: var(--secondary); text-decoration: none;">Prendre rendez-vous</a></p>
+                </div>
+            </div>
+            <div class="footer-divider">
+                <p>&copy; 2024 Centre Dentaire Nantes Robert Schuman. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const burgerMenu = document.getElementById('burger-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            navMenu.classList.toggle('open');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.menu-card, .review-card, .gallery-item, .trust-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll behavior for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
